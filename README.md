@@ -25,16 +25,3 @@
 ![macOS](https://img.shields.io/badge/macOS-999999?style=flat&logo=apple&logoColor=white)
 
 ---
-
-## 🔭 Active Projects
-
-### [CryptoToysPP](https://github.com/BinRacer/CryptoToysPP)
-🔐 High-Performance Cryptography Toolkit with modern C++ implementations
-
-### [YanLib](https://github.com/BinRacer/YanLib)
-🛠️ High-Performance Windows Runtime Library Based on Modern C++ RAII Mechanisms
-
-### [CryptoToys](https://github.com/BinRacer/CryptoToys)
-🔐 Crypto Toolkit built on YanLib Library
-
----
