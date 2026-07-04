@@ -1,12 +1,11 @@
-# 👋 Hello, I'm BinRacer | Full-Stack Developer
+# 👋 Hello, I'm BinRacer
 
 > *"First, solve the problem. Then, write the code."* — John Johnson
 
 ---
 
-## 🛠️ Tech Stack
+## ⚙️ Core Languages
 
-### **Core Languages**
 ![C++](https://img.shields.io/badge/C++-007ACC?style=flat-square&logo=c%2B%2B&logoColor=white&labelColor=2C3E50)
 ![Go](https://img.shields.io/badge/Go-29BEB0?style=flat-square&logo=go&logoColor=white&labelColor=1D2D3C)
 ![Rust](https://img.shields.io/badge/Rust-E05C44?style=flat-square&logo=rust&logoColor=white&labelColor=1A1918)
@@ -14,14 +13,26 @@
 ![Assembly](https://img.shields.io/badge/Assembly-6A0400?style=flat-square&logo=assemblyscript&logoColor=white&labelColor=320000)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white&labelColor=2C5F7E)
 
-### **C++ Frameworks**
+## 🧩 C++ Frameworks
+
 ![wxWidgets](https://img.shields.io/badge/wxWidgets-0084C7?style=flat-square&logo=c%2B%2B&logoColor=white)
 ![Qt](https://img.shields.io/badge/Qt-41CD52?style=flat-square&logo=qt&logoColor=white)
 
-### Tools & Platforms
+## 🔧 Tools & Platforms
+
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
 ![Windows](https://img.shields.io/badge/Windows-0078D6?style=flat&logo=windows&logoColor=white)
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black)
 ![macOS](https://img.shields.io/badge/macOS-999999?style=flat&logo=apple&logoColor=white)
 
+## 🏆 Pwn / Wargame Achievements
+
+![pwnable.kr](https://img.shields.io/badge/pwnable.kr-All%20Clear-E05C44?style=flat-square&logo=buffer&logoColor=white)
+![pwnable.tw](https://img.shields.io/badge/pwnable.tw-All%20Clear-6A0400?style=flat-square&logo=buffer&logoColor=white)
+
+- **pwnable.kr** — *Toddler's Bottle / Rookiss / Grotesque / Hacker's Secret* – all difficulties cleared 🎉
+- **pwnable.tw** — Full board All Clear 🎉
+
 ---
+
+> *"Read the flag."*
