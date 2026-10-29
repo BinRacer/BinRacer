@@ -1,38 +1,75 @@
-# 👋 Hello, I'm BinRacer
+<div align="center">
 
-> *"First, solve the problem. Then, write the code."* — John Johnson
+# BinRacer
+
+**Security research on memory allocators.**
+
+The glibc heap and the Linux kernel, studied through reproducible labs and GDB
+tooling for inspecting a live kernel.
+
+[![Blog](https://img.shields.io/badge/blog-binracer.github.io-181717.svg)](https://binracer.github.io/)
+[![KernLens](https://img.shields.io/badge/KernLens-docs-4a9eff.svg)](https://binracer.github.io/KernLens/)
+
+</div>
+
+The work here studies how two allocators behave — `malloc` in userland and SLUB in
+the kernel — and publishes each finding as a lab that reproduces it: a target, a
+launcher, and an expected result, so a claim can be checked rather than accepted.
+
+| | Allocator | A wrong read shows up as |
+| --- | --- | --- |
+| **glibc** | `malloc`, in userland | a crash, at the point of the error |
+| **SLUB** | the kernel's allocator | plausible data — the error stays hidden |
+
+The second row is the reason for the kernel tooling. Without a way to inspect the
+object itself, an incorrect offset returns a value that looks valid, and nothing
+downstream reveals the mistake.
+
+## Projects
+
+| Project | Scope | Scale |
+| --- | --- | --- |
+| [**pwn4heap**](https://github.com/BinRacer/pwn4heap) | glibc allocator behaviour as Python labs, one per branch a technique applies to | 69 techniques · 236 labs · glibc 2.23–2.39 · MIT |
+| [**pwn4kernel**](https://github.com/BinRacer/pwn4kernel) | kernel memory behaviour as standalone QEMU labs, with mitigations enabled | 24 techniques · 66 labs · 26 builds · kernels 4.4–6.14 · GPL-3.0 |
+| [**KernLens**](https://github.com/BinRacer/KernLens) | 30 GDB commands for page tables, SLUB caches, `struct page` and KASLR | Python · x86-64 · GPL-3.0 |
+
+The 236 `pwn4heap` labs share 78 target binaries: the technique is the subject, and
+each target ships the `ld` and `libc` of the branch it was built for. Every
+`pwn4kernel` launcher boots with SMEP, SMAP, KPTI and KASLR enabled, so a lab
+describes behaviour under the mitigations a current kernel actually has.
+
+## See it run
+
+<p align="center">
+  <img src="https://binracer.github.io/KernLens/assets/demo.svg"
+       alt="kl-walk decoding a 2 MiB page-table mapping, then kl-slab details decoding a SLUB freelist pointer on a 6.1.134 kernel"
+       width="100%">
+</p>
+
+`kl-walk` decoding a 2 MiB page-table mapping, then `kl-slab details` decoding a
+freelist pointer out of a real object chain on a 6.1.134 kernel — verbatim from a
+recorded session.
+
+KernLens reports the entry each answer came from, so an incorrect read is visible
+rather than plausible, and resolves structure layouts from DWARF, then the image's
+own BTF, then a versioned registry. That ordering is what lets it work on a
+distribution's stripped `vmlinux` and not only on a debug package.
+
+[Source](https://github.com/BinRacer/KernLens) ·
+[Docs](https://binracer.github.io/KernLens/) ·
+[PyPI](https://pypi.org/project/kernlens/)
+
+## Background
+
+Systems programming in C, C++, Rust, Go and Python, with a focus on x86-64. Prior
+work: pwnable.kr and pwnable.tw, completed.
 
 ---
 
-## ⚙️ Core Languages
+<div align="center">
 
-![C++](https://img.shields.io/badge/C++-007ACC?style=flat-square&logo=c%2B%2B&logoColor=white&labelColor=2C3E50)
-![Go](https://img.shields.io/badge/Go-29BEB0?style=flat-square&logo=go&logoColor=white&labelColor=1D2D3C)
-![Rust](https://img.shields.io/badge/Rust-E05C44?style=flat-square&logo=rust&logoColor=white&labelColor=1A1918)
-![Java](https://img.shields.io/badge/Java-007396?style=flat-square&logo=openjdk&logoColor=white&labelColor=1E4167)
-![Assembly](https://img.shields.io/badge/Assembly-6A0400?style=flat-square&logo=assemblyscript&logoColor=white&labelColor=320000)
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white&labelColor=2C5F7E)
+*"First, solve the problem. Then, write the code." — John Johnson*
 
-## 🧩 C++ Frameworks
+[blog](https://binracer.github.io/) · [KernLens docs](https://binracer.github.io/KernLens/) · [PyPI](https://pypi.org/project/kernlens/)
 
-![wxWidgets](https://img.shields.io/badge/wxWidgets-0084C7?style=flat-square&logo=c%2B%2B&logoColor=white)
-![Qt](https://img.shields.io/badge/Qt-41CD52?style=flat-square&logo=qt&logoColor=white)
-
-## 🔧 Tools & Platforms
-
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
-![Windows](https://img.shields.io/badge/Windows-0078D6?style=flat&logo=windows&logoColor=white)
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black)
-![macOS](https://img.shields.io/badge/macOS-999999?style=flat&logo=apple&logoColor=white)
-
-## 🏆 Pwn / Wargame Achievements
-
-![pwnable.kr](https://img.shields.io/badge/pwnable.kr-All%20Clear-E05C44?style=flat-square&logo=buffer&logoColor=white)
-![pwnable.tw](https://img.shields.io/badge/pwnable.tw-All%20Clear-6A0400?style=flat-square&logo=buffer&logoColor=white)
-
-- **pwnable.kr** — *Toddler's Bottle / Rookiss / Grotesque / Hacker's Secret* – all difficulties cleared 🎉
-- **pwnable.tw** — Full board All Clear 🎉
-
----
-
-> *"Read the flag."*
+</div>
